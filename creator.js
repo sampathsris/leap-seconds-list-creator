@@ -80,7 +80,3 @@ module.exports = (outfile) => {
         });
     });
 }
-
-// allows to run from command line in the following fasion:
-// > node index.js /path/to/output/file.json
-require('make-runnable');
