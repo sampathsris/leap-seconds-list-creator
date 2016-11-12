@@ -2,9 +2,12 @@
   "name": "leap-seconds-list-creator",
   "version": "0.1.0",
   "description": "Creates a JSON file containing the leap seconds declared at https://www.ietf.org/timezones/data/leap-seconds.list.",
-  "main": "index.js",
+  "main": "creator.js",
+  "bin": {
+    "leap-seconds-list-creator": "creator.js"
+  },
   "scripts": {
-    "test": "node index.js build/list.json"
+    "test": "node -e \"require('.')('build/list.json')\""
   },
   "repository": {
     "type": "git",
