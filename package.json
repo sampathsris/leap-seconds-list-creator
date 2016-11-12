@@ -4,7 +4,7 @@
   "description": "Creates a JSON file containing the leap seconds declared at https://www.ietf.org/timezones/data/leap-seconds.list.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js build/list.json"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/sampathsris/leap-seconds-list-creator/issues"
   },
-  "homepage": "https://github.com/sampathsris/leap-seconds-list-creator#readme"
+  "homepage": "https://github.com/sampathsris/leap-seconds-list-creator#readme",
+  "dependencies": {
+    "make-runnable": "^1.0.7",
+    "request": "^2.78.0"
+  }
 }
