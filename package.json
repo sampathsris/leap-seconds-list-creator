@@ -1,6 +1,6 @@
 {
   "name": "leap-seconds-list-creator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Creates a JSON file containing the leap seconds declared at https://www.ietf.org/timezones/data/leap-seconds.list.",
   "main": "creator.js",
   "bin": {
