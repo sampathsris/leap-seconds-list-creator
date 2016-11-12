@@ -1,0 +1,32 @@
+#! /usr/bin/env node
+
+const program = require('commander');
+const creator = require('../creator');
+
+let pkg = require('../package.json');
+let outfile = null;
+
+program
+    .version(pkg.version)
+    .arguments('<file>')
+    .usage('<file>')
+    .action((file) => {
+        outfile = file;
+    })
+    .parse(process.argv);
+
+(function () {
+    if (!outfile) {
+        program.help();
+        return;
+    }
+
+    creator(outfile, (err, data) => {
+        if (err) {
+            console.log('Error: ' + err);
+            return;
+        }
+
+        console.log('Program completed successfully.')
+    });
+}());
