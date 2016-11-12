@@ -13,7 +13,11 @@ function error(message, error) {
 }
 
 module.exports = (outfile) => {
+    console.log('Requesting ' + source);
+
     request.get(source, (error, response, body) => {
+        console.log('Received data from source...');
+
         if (error) {
             return error('Error while retrieving URL: ' + source, error);
         }
@@ -61,6 +65,7 @@ module.exports = (outfile) => {
             return error('No output file specified', null);
         }
         
+        console.log('Opening file ' + outfile);
         // Open file for reading and writing. The file is created (if it does
         // not exist) or truncated (if it exists).
         fs.open(outfile, 'w+', (err) => {
@@ -70,6 +75,7 @@ module.exports = (outfile) => {
             
             let json = JSON.stringify(data, null, 4);
             
+            console.log('Preparing to write to file...');
             fs.writeFile(outfile, json, 'utf8', (err) => {
                 if (err) {
                     return error('Error while writing output file: ' + outfile, err);
