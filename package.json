@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/sampathsris/leap-seconds-list-creator#readme",
   "dependencies": {
+    "commander": "^2.9.0",
     "request": "^2.78.0"
   }
 }
