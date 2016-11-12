@@ -16,5 +16,5 @@ creator('/path/to/file.json');
 
 ## from command line
 ```
-node -e "require('leap-seconds-list-creator')('/path/to/file.json')"
+$ leap-seconds-list-creator /path/to/file.json
 ```
