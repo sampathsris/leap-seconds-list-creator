@@ -3,7 +3,7 @@ Creates a JSON file containing the leap seconds declared at https://www.ietf.org
 
 # installation
 ```
-npm install leap-seconds-list-creator
+npm install -g leap-seconds-list-creator
 ```
 
 # usage
