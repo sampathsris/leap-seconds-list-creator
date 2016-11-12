@@ -4,14 +4,18 @@ const fs = require('fs');
 
 const source = 'https://www.ietf.org/timezones/data/leap-seconds.list';
 
+function error(message, error) {
+    console.log(message);
+
+    if (error) {
+        console.log('  ERROR: ' + error);
+    }
+}
+
 module.exports = (outfile) => {
     request.get(source, (error, response, body) => {
         if (error) {
-            console.log('Error while retrieving from www.ietf.org: ');
-            console.log('  URL: ' + source);
-            console.log('  ERROR: ' + error);
-            
-            return;
+            return error('Error while retrieving URL: ' + source, error);
         }
         
         let data = {
@@ -54,28 +58,21 @@ module.exports = (outfile) => {
             });
         
         if (!outfile) {
-            console.log('No output file specified');
-            return;
+            return error('No output file specified', null);
         }
         
         // Open file for reading and writing. The file is created (if it does
         // not exist) or truncated (if it exists).
         fs.open(outfile, 'w+', (err) => {
             if (err) {
-                console.log('Error while opening output file: ');
-                console.log('  FILE: ' + outfile);
-                console.log('  ERROR: ' + err);
-                return;
+                return error('Error while opening output file: ' + outfile, err);
             }
             
             let json = JSON.stringify(data, null, 4);
             
             fs.writeFile(outfile, json, 'utf8', (err) => {
                 if (err) {
-                    console.log('Error while writing output file: ');
-                    console.log('  FILE: ' + outfile);
-                    console.log('  ERROR: ' + err);
-                    return;
+                    return error('Error while writing output file: ' + outfile, err);
                 }
                 
                 console.log('Done!');
